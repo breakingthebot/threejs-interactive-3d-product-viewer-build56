@@ -1,0 +1,114 @@
+/* src/components/StudioLighting.css */
+/* Styles for Real-Time Studio Lighting Control Panel */
+
+.lighting-panel {
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 380px;
+  background: var(--bg-surface, rgba(15, 23, 42, 0.92));
+  border: 1px solid var(--border-glow, rgba(56, 189, 248, 0.4));
+  border-radius: 20px;
+  padding: 18px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 105;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .lighting-panel {
+    width: calc(100% - 32px);
+    bottom: 80px;
+  }
+}
+
+.lp-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+  padding-bottom: 10px;
+}
+
+.lp-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lp-icon {
+  color: #fbbf24;
+}
+
+.lp-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.lp-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-secondary, #cbd5e1);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lp-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.lp-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lp-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.lp-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lp-label-text {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary, #cbd5e1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.lp-value {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.lp-slider {
+  width: 100%;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+  accent-color: #38bdf8;
+}

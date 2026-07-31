@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, Camera, Volume2, VolumeX, Smartphone, Sparkles, Layers } from 'lucide-react';
+import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Sparkles, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import './Toolbar.css';
@@ -19,6 +19,8 @@ import './Toolbar.css';
  * @param {Function} props.setEnvPreset - Environment preset updater.
  * @param {Function} props.onTakeSnapshot - Screenshot PNG export handler.
  * @param {Function} props.onOpenAR - AR launcher modal trigger handler.
+ * @param {Function} props.onToggleLighting - Studio lighting panel toggle handler.
+ * @param {boolean} props.isLightingOpen - Lighting studio open state.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
  */
@@ -29,6 +31,8 @@ export function Toolbar({
   setEnvPreset,
   onTakeSnapshot,
   onOpenAR,
+  onToggleLighting,
+  isLightingOpen,
   isMuted,
   setIsMuted
 }) {
@@ -70,6 +74,19 @@ export function Toolbar({
           ))}
         </select>
       </div>
+
+      {/* STUDIO LIGHTING CONTROLS */}
+      <button
+        className={`toolbar-btn ${isLightingOpen ? 'active' : ''}`}
+        onClick={() => {
+          playClickSound();
+          if (onToggleLighting) onToggleLighting();
+        }}
+        title="Studio Lighting & Shadow Controls"
+      >
+        <SunMedium size={15} />
+        <span>Lighting Studio</span>
+      </button>
 
       {/* AR AUGMENTED REALITY LAUNCHER */}
       <button

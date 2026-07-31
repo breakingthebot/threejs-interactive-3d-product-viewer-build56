@@ -28,9 +28,18 @@ export function ViewerCanvas({
   explodedFactor = 0,
   customTextureUrl,
   textureConfig,
+  lightingProps,
   onSelectHotspot
 }) {
   const controlsRef = useRef();
+
+  // Compute 3D spherical coordinates for key directional light
+  const radAz = ((lightingProps?.azimuth ?? 45) * Math.PI) / 180;
+  const radEl = ((lightingProps?.elevation ?? 45) * Math.PI) / 180;
+  const radius = 12;
+  const lightX = radius * Math.cos(radEl) * Math.sin(radAz);
+  const lightY = radius * Math.sin(radEl);
+  const lightZ = radius * Math.cos(radEl) * Math.cos(radAz);
 
   return (
     <div className="viewer-canvas-container">
@@ -40,8 +49,12 @@ export function ViewerCanvas({
         className="r3f-canvas"
       >
         {/* LIGHTING & ENVIRONMENT */}
-        <ambientLight intensity={0.6} />
-        <directionalLight position={[10, 10, 5]} intensity={1.2} castShadow />
+        <ambientLight intensity={lightingProps?.ambientIntensity ?? 0.6} />
+        <directionalLight
+          position={[lightX, lightY, lightZ]}
+          intensity={lightingProps?.keyLightIntensity ?? 1.2}
+          castShadow
+        />
         <directionalLight position={[-10, -10, -5]} intensity={0.4} color="#38bdf8" />
         <spotLight position={[0, 15, 0]} intensity={0.8} penumbra={1} angle={0.6} />
 

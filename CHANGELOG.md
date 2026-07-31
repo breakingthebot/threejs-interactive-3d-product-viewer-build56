@@ -5,6 +5,13 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.3.0] - 2026-07-31
+
+### Added
+- Integrated **Real-Time Studio Lighting Control & Directional Light Gizmo (`StudioLighting.jsx`, `StudioLighting.css`)**.
+- Added dynamic 3D spherical light coordinate positioning (`lightX`, `lightY`, `lightZ`) based on azimuth (0°-360°) and elevation (10°-90°) angle sliders.
+- Added "Lighting Studio" button to floating toolbar (`Toolbar.jsx`).
+
 ## [1.2.0] - 2026-07-31
 
 ### Added

@@ -11,6 +11,7 @@ import { MaterialInspector } from './components/MaterialInspector';
 import { Toolbar } from './components/Toolbar';
 import { HotspotModal } from './components/HotspotModal';
 import { ARViewerModal } from './components/ARViewerModal';
+import { StudioLighting } from './components/StudioLighting';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -35,6 +36,13 @@ export function App() {
   const [customTextureUrl, setCustomTextureUrl] = useState(null);
   const [textureConfig, setTextureConfig] = useState({ repeat: 1 });
   const [isARModalOpen, setIsARModalOpen] = useState(false);
+  const [isLightingOpen, setIsLightingOpen] = useState(false);
+  const [lightingProps, setLightingProps] = useState({
+    keyLightIntensity: 1.2,
+    ambientIntensity: 0.6,
+    azimuth: 45,
+    elevation: 45
+  });
 
   // Take high-resolution screenshot snapshot of WebGL canvas
   const handleTakeSnapshot = () => {
@@ -73,6 +81,7 @@ export function App() {
         explodedFactor={explodedFactor}
         customTextureUrl={customTextureUrl}
         textureConfig={textureConfig}
+        lightingProps={lightingProps}
         onSelectHotspot={setSelectedHotspot}
       />
 
@@ -106,6 +115,14 @@ export function App() {
         setTextureConfig={setTextureConfig}
       />
 
+      {/* FLOATING STUDIO LIGHTING CONTROLS */}
+      <StudioLighting
+        isOpen={isLightingOpen}
+        onClose={() => setIsLightingOpen(false)}
+        lightingProps={lightingProps}
+        setLightingProps={setLightingProps}
+      />
+
       {/* BOTTOM FLOATING TOOLBAR */}
       <Toolbar
         isAutoRotate={isAutoRotate}
@@ -114,6 +131,8 @@ export function App() {
         setEnvPreset={setEnvPreset}
         onTakeSnapshot={handleTakeSnapshot}
         onOpenAR={() => setIsARModalOpen(true)}
+        onToggleLighting={() => setIsLightingOpen(!isLightingOpen)}
+        isLightingOpen={isLightingOpen}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
       />
