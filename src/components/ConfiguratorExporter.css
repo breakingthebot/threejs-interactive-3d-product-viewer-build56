@@ -1,0 +1,178 @@
+/* src/components/ConfiguratorExporter.css */
+/* Styles for Configurator & Preset Exporter Modal */
+
+.preset-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(8, 12, 20, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.preset-modal-card {
+  width: 100%;
+  max-width: 560px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid var(--border-glow, rgba(56, 189, 248, 0.4));
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.pm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: rgba(30, 41, 59, 0.4);
+  border-bottom: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+}
+
+.pm-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pm-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+}
+
+.pm-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pm-icon {
+  color: #38bdf8;
+}
+
+.pm-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-secondary, #cbd5e1);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pm-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.pm-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.pm-section {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pm-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #94a3b8);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pm-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pm-text-btn {
+  background: transparent;
+  border: none;
+  color: #38bdf8;
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.pm-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(8, 12, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 0.85rem;
+  outline: none;
+  font-family: inherit;
+}
+
+.pm-input.read-only {
+  color: #38bdf8;
+  font-family: monospace;
+  font-size: 0.78rem;
+}
+
+.pm-copy-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pm-copy-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #38bdf8;
+  color: #041220;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.pm-copy-btn:hover {
+  background: #7dd3fc;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}
+
+.pm-json-box {
+  padding: 14px;
+  background: rgba(8, 12, 20, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  font-family: monospace;
+  font-size: 0.78rem;
+  color: #34d399;
+  max-height: 140px;
+  overflow-y: auto;
+}

@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Sparkles, Layers } from 'lucide-react';
+import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, Sparkles, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import './Toolbar.css';
@@ -21,6 +21,7 @@ import './Toolbar.css';
  * @param {Function} props.onOpenAR - AR launcher modal trigger handler.
  * @param {Function} props.onToggleLighting - Studio lighting panel toggle handler.
  * @param {boolean} props.isLightingOpen - Lighting studio open state.
+ * @param {Function} props.onOpenPreset - Preset exporter modal trigger handler.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
  */
@@ -33,6 +34,7 @@ export function Toolbar({
   onOpenAR,
   onToggleLighting,
   isLightingOpen,
+  onOpenPreset,
   isMuted,
   setIsMuted
 }) {
@@ -99,6 +101,19 @@ export function Toolbar({
       >
         <Smartphone size={15} />
         <span>View in AR</span>
+      </button>
+
+      {/* SHARE COLORWAY PRESET */}
+      <button
+        className="toolbar-btn"
+        onClick={() => {
+          playClickSound();
+          if (onOpenPreset) onOpenPreset();
+        }}
+        title="Share & Export Colorway Preset"
+      >
+        <Share2 size={15} />
+        <span>Share Preset</span>
       </button>
 
       {/* SCREENSHOT SNAPSHOT EXPORTER */}

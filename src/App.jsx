@@ -3,7 +3,7 @@
 // Connects to: src/components/Navbar.jsx, src/components/ViewerCanvas.jsx, src/components/ProductInfoPanel.jsx, src/components/MaterialInspector.jsx, src/components/Toolbar.jsx, src/components/HotspotModal.jsx
 // Created: 2026-07-31
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { ViewerCanvas } from './components/ViewerCanvas';
 import { ProductInfoPanel } from './components/ProductInfoPanel';
@@ -12,6 +12,7 @@ import { Toolbar } from './components/Toolbar';
 import { HotspotModal } from './components/HotspotModal';
 import { ARViewerModal } from './components/ARViewerModal';
 import { StudioLighting } from './components/StudioLighting';
+import { ConfiguratorExporter } from './components/ConfiguratorExporter';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -37,12 +38,34 @@ export function App() {
   const [textureConfig, setTextureConfig] = useState({ repeat: 1 });
   const [isARModalOpen, setIsARModalOpen] = useState(false);
   const [isLightingOpen, setIsLightingOpen] = useState(false);
+  const [isPresetModalOpen, setIsPresetModalOpen] = useState(false);
   const [lightingProps, setLightingProps] = useState({
     keyLightIntensity: 1.2,
     ambientIntensity: 0.6,
     azimuth: 45,
     elevation: 45
   });
+
+  // Restore preset configuration from URL hash if present
+  useEffect(() => {
+    if (window.location.hash.includes('preset=')) {
+      try {
+        const raw = window.location.hash.split('preset=')[1];
+        const decoded = JSON.parse(atob(raw));
+        const matchedProd = productsList.find((p) => p.id === decoded.pId) || productsList[0];
+        setProduct(matchedProd);
+        setMaterialProps((prev) => ({
+          ...prev,
+          hex: decoded.hex || prev.hex,
+          roughness: decoded.rough ?? prev.roughness,
+          metalness: decoded.metal ?? prev.metalness,
+          clearcoat: decoded.coat ?? prev.clearcoat
+        }));
+      } catch (e) {
+        // Ignore invalid preset hash gracefully
+      }
+    }
+  }, []);
 
   // Take high-resolution screenshot snapshot of WebGL canvas
   const handleTakeSnapshot = () => {
@@ -133,6 +156,7 @@ export function App() {
         onOpenAR={() => setIsARModalOpen(true)}
         onToggleLighting={() => setIsLightingOpen(!isLightingOpen)}
         isLightingOpen={isLightingOpen}
+        onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
       />
@@ -148,6 +172,14 @@ export function App() {
         isOpen={isARModalOpen}
         onClose={() => setIsARModalOpen(false)}
         product={product}
+      />
+
+      {/* COLORWAY CONFIGURATOR PRESET MODAL */}
+      <ConfiguratorExporter
+        isOpen={isPresetModalOpen}
+        onClose={() => setIsPresetModalOpen(false)}
+        product={product}
+        materialProps={materialProps}
       />
     </div>
   );

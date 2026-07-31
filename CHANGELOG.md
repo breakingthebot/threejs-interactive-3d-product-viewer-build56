@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.4.0] - 2026-07-31
+
+### Added
+- Integrated **Interactive 3D Product Colorway Configurator & Preset Exporter (`ConfiguratorExporter.jsx`, `ConfiguratorExporter.css`)**.
+- Built Base64 URL deep-link state serializer (`#preset=...`) for instant sharing of 3D product material configurations.
+- Added automatic URL hash parser on app mount to restore shared colorway presets.
+- Added "Share Preset" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [1.3.0] - 2026-07-31
 
 ### Added
