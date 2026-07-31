@@ -5,6 +5,13 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.2.0] - 2026-07-31
+
+### Added
+- Integrated **Interactive 3D Product AR (Augmented Reality) Viewport (`ARViewerModal.jsx`, `ARViewerModal.css`)**.
+- Built WebXR AR launcher modal with dynamic desktop-to-mobile QR code generator API for smartphone cameras.
+- Added "View in AR" action button to bottom floating toolbar (`Toolbar.jsx`).
+
 ## [1.1.0] - 2026-07-31
 
 ### Added

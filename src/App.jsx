@@ -10,6 +10,7 @@ import { ProductInfoPanel } from './components/ProductInfoPanel';
 import { MaterialInspector } from './components/MaterialInspector';
 import { Toolbar } from './components/Toolbar';
 import { HotspotModal } from './components/HotspotModal';
+import { ARViewerModal } from './components/ARViewerModal';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -33,6 +34,7 @@ export function App() {
   const [isMuted, setIsMuted] = useState(soundFX.isMuted);
   const [customTextureUrl, setCustomTextureUrl] = useState(null);
   const [textureConfig, setTextureConfig] = useState({ repeat: 1 });
+  const [isARModalOpen, setIsARModalOpen] = useState(false);
 
   // Take high-resolution screenshot snapshot of WebGL canvas
   const handleTakeSnapshot = () => {
@@ -111,6 +113,7 @@ export function App() {
         envPreset={envPreset}
         setEnvPreset={setEnvPreset}
         onTakeSnapshot={handleTakeSnapshot}
+        onOpenAR={() => setIsARModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
       />
@@ -119,6 +122,13 @@ export function App() {
       <HotspotModal
         hotspot={selectedHotspot}
         onClose={() => setSelectedHotspot(null)}
+      />
+
+      {/* AUGMENTED REALITY (AR) LAUNCHER MODAL */}
+      <ARViewerModal
+        isOpen={isARModalOpen}
+        onClose={() => setIsARModalOpen(false)}
+        product={product}
       />
     </div>
   );

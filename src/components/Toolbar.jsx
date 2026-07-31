@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, Camera, Volume2, VolumeX, Sparkles, Layers } from 'lucide-react';
+import { RotateCw, Sun, Camera, Volume2, VolumeX, Smartphone, Sparkles, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import './Toolbar.css';
@@ -18,6 +18,7 @@ import './Toolbar.css';
  * @param {string} props.envPreset - Selected environment preset ID.
  * @param {Function} props.setEnvPreset - Environment preset updater.
  * @param {Function} props.onTakeSnapshot - Screenshot PNG export handler.
+ * @param {Function} props.onOpenAR - AR launcher modal trigger handler.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
  */
@@ -27,6 +28,7 @@ export function Toolbar({
   envPreset,
   setEnvPreset,
   onTakeSnapshot,
+  onOpenAR,
   isMuted,
   setIsMuted
 }) {
@@ -68,6 +70,19 @@ export function Toolbar({
           ))}
         </select>
       </div>
+
+      {/* AR AUGMENTED REALITY LAUNCHER */}
+      <button
+        className="toolbar-btn"
+        onClick={() => {
+          playClickSound();
+          if (onOpenAR) onOpenAR();
+        }}
+        title="View Product in Augmented Reality (AR)"
+      >
+        <Smartphone size={15} />
+        <span>View in AR</span>
+      </button>
 
       {/* SCREENSHOT SNAPSHOT EXPORTER */}
       <button className="toolbar-btn primary" onClick={onTakeSnapshot} title="Capture 3D Snapshot (PNG)">
