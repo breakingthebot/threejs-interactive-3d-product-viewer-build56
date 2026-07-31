@@ -1,0 +1,69 @@
+/* src/components/HotspotAnnotation.css */
+/* Styles for 3D Hotspot Callout Pins */
+
+.hotspot-pin-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.9);
+  border: 2px solid #38bdf8;
+  color: #38bdf8;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+  transition: all 0.25 ease;
+  transform: translate(-50%, -50%);
+}
+
+.hotspot-pin-btn:hover {
+  background: #38bdf8;
+  color: #041220;
+  transform: translate(-50%, -50%) scale(1.15);
+  box-shadow: 0 0 25px rgba(56, 189, 248, 0.8);
+}
+
+.pin-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px solid #38bdf8;
+  animation: pin-ping 1.8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes pin-ping {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+.pin-tooltip {
+  position: absolute;
+  left: 38px;
+  top: 50%;
+  transform: translateY(-50%);
+  white-space: nowrap;
+  background: rgba(15, 23, 42, 0.92);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  backdrop-filter: blur(8px);
+}
+
+.hotspot-pin-btn:hover .pin-tooltip {
+  opacity: 1;
+}

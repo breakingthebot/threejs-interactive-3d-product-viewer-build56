@@ -1,0 +1,175 @@
+/* src/components/MaterialInspector.css */
+/* Styles for Material Inspector Sidebar */
+
+.material-inspector-panel {
+  position: absolute;
+  right: 20px;
+  top: 90px;
+  width: 320px;
+  max-height: calc(100vh - 110px);
+  background: var(--bg-surface, rgba(15, 23, 42, 0.85));
+  border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.12));
+  border-radius: 20px;
+  padding: 20px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .material-inspector-panel {
+    display: none; /* Hide on narrow screens, accessible via drawer */
+  }
+}
+
+.inspector-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+  padding-bottom: 12px;
+}
+
+.inspector-icon {
+  color: #38bdf8;
+}
+
+.inspector-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.inspector-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.section-label {
+  font-size: 0.76rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #94a3b8);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.swatches-grid {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.swatch-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.swatch-btn:hover {
+  transform: scale(1.12);
+  border-color: #38bdf8;
+}
+
+.swatch-btn.selected {
+  border-color: #38bdf8;
+  box-shadow: 0 0 12px #38bdf8;
+  transform: scale(1.1);
+}
+
+.swatch-check {
+  color: #ffffff;
+}
+
+.slider-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.slider-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary, #cbd5e1);
+}
+
+.slider-value {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.inspector-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+  accent-color: #38bdf8;
+}
+
+/* TOGGLE ROW */
+.toggle-row {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px dashed var(--border-glass, rgba(255, 255, 255, 0.1));
+}
+
+.toggle-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.toggle-switch {
+  width: 44px;
+  height: 24px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.toggle-switch.active {
+  background: #38bdf8;
+  border-color: #38bdf8;
+}
+
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.toggle-switch.active .toggle-thumb {
+  left: 22px;
+  background: #041220;
+}
