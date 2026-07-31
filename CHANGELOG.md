@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.1.0] - 2026-07-31
+
+### Added
+- Integrated **Custom Texture Image Drag-and-Drop Uploader & UV Decal Studio (`TextureStudio.jsx`, `TextureStudio.css`)**.
+- Built drag-and-drop texture upload box supporting `.png`, `.jpg`, and `.webp` images.
+- Added dynamic `THREE.TextureLoader` mapping with customizable tile repeat scaling (`ProductMesh.jsx`).
+- Embedded texture studio controls inside Material Inspector sidebar panel.
+
 ## [1.0.0] - 2026-07-31
 
 ### Added

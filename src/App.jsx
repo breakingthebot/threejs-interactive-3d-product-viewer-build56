@@ -31,6 +31,8 @@ export function App() {
   const [explodedFactor, setExplodedFactor] = useState(0);
   const [selectedHotspot, setSelectedHotspot] = useState(null);
   const [isMuted, setIsMuted] = useState(soundFX.isMuted);
+  const [customTextureUrl, setCustomTextureUrl] = useState(null);
+  const [textureConfig, setTextureConfig] = useState({ repeat: 1 });
 
   // Take high-resolution screenshot snapshot of WebGL canvas
   const handleTakeSnapshot = () => {
@@ -57,6 +59,7 @@ export function App() {
           wireframe: false
         });
         setExplodedFactor(0);
+        setCustomTextureUrl(null);
       }} />
 
       {/* 3D WEBGL CANVAS VIEWPORT */}
@@ -66,6 +69,8 @@ export function App() {
         envPreset={envPreset}
         isAutoRotate={isAutoRotate}
         explodedFactor={explodedFactor}
+        customTextureUrl={customTextureUrl}
+        textureConfig={textureConfig}
         onSelectHotspot={setSelectedHotspot}
       />
 
@@ -82,6 +87,7 @@ export function App() {
             wireframe: false
           });
           setExplodedFactor(0);
+          setCustomTextureUrl(null);
         }}
         explodedFactor={explodedFactor}
         setExplodedFactor={setExplodedFactor}
@@ -92,6 +98,10 @@ export function App() {
         product={product}
         materialProps={materialProps}
         setMaterialProps={setMaterialProps}
+        customTextureUrl={customTextureUrl}
+        setCustomTextureUrl={setCustomTextureUrl}
+        textureConfig={textureConfig}
+        setTextureConfig={setTextureConfig}
       />
 
       {/* BOTTOM FLOATING TOOLBAR */}

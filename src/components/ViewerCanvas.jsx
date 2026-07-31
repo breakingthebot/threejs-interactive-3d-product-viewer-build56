@@ -26,6 +26,8 @@ export function ViewerCanvas({
   envPreset = 'city',
   isAutoRotate = true,
   explodedFactor = 0,
+  customTextureUrl,
+  textureConfig,
   onSelectHotspot
 }) {
   const controlsRef = useRef();
@@ -50,6 +52,8 @@ export function ViewerCanvas({
           productId={product.id}
           materialProps={materialProps}
           explodedFactor={explodedFactor}
+          customTextureUrl={customTextureUrl}
+          textureConfig={textureConfig}
         />
 
         {/* 3D HOTSPOT ANNOTATIONS */}

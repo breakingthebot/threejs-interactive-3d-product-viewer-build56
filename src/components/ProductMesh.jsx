@@ -14,8 +14,19 @@ import * as THREE from 'three';
  * @param {Object} props.materialProps - Base color, roughness, metalness, clearcoat, wireframe.
  * @param {number} props.explodedFactor - Offset multiplier (0.0 to 1.0) separating 3D mesh components.
  */
-export function ProductMesh({ productId, materialProps, explodedFactor }) {
+export function ProductMesh({ productId, materialProps, explodedFactor, customTextureUrl, textureConfig }) {
   const groupRef = useRef();
+
+  // Load custom texture if present
+  const loadedTexture = React.useMemo(() => {
+    if (!customTextureUrl) return null;
+    const loader = new THREE.TextureLoader();
+    const tex = loader.load(customTextureUrl);
+    tex.wrapS = THREE.RepeatWrapping;
+    tex.wrapT = THREE.RepeatWrapping;
+    tex.repeat.set(textureConfig?.repeat || 1, textureConfig?.repeat || 1);
+    return tex;
+  }, [customTextureUrl, textureConfig]);
 
   // Gentle floating animation
   useFrame((state) => {
@@ -26,7 +37,8 @@ export function ProductMesh({ productId, materialProps, explodedFactor }) {
 
   const material = (
     <meshPhysicalMaterial
-      color={materialProps.hex || '#0f172a'}
+      color={loadedTexture ? '#ffffff' : (materialProps.hex || '#0f172a')}
+      map={loadedTexture || null}
       roughness={materialProps.roughness ?? 0.25}
       metalness={materialProps.metalness ?? 0.85}
       clearcoat={materialProps.clearcoat ?? 0.4}

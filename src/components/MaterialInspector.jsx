@@ -1,11 +1,7 @@
-// src/components/MaterialInspector.jsx
-// Material & Texture Customizer Panel for Base Color, Roughness, Metalness & Wireframe.
-// Connects to: src/App.jsx, src/components/ViewerCanvas.jsx
-// Created: 2026-07-31
-
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Palette, Sliders, Eye, Sparkles, Layers, Check } from 'lucide-react';
+import { TextureStudio } from './TextureStudio';
 import { playMaterialSound, playToggleSound } from '../utils/soundFX';
 import './MaterialInspector.css';
 
@@ -15,8 +11,20 @@ import './MaterialInspector.css';
  * @param {Object} props.product - Selected product data object.
  * @param {Object} props.materialProps - Material properties state.
  * @param {Function} props.setMaterialProps - Material properties updater function.
+ * @param {string|null} props.customTextureUrl - Custom texture image URL.
+ * @param {Function} props.setCustomTextureUrl - Custom texture URL updater.
+ * @param {Object} props.textureConfig - Custom texture scale/repeat config.
+ * @param {Function} props.setTextureConfig - Custom texture config updater.
  */
-export function MaterialInspector({ product, materialProps, setMaterialProps }) {
+export function MaterialInspector({
+  product,
+  materialProps,
+  setMaterialProps,
+  customTextureUrl,
+  setCustomTextureUrl,
+  textureConfig,
+  setTextureConfig
+}) {
   const handleColorChange = (preset) => {
     playMaterialSound();
     setMaterialProps({
@@ -119,6 +127,14 @@ export function MaterialInspector({ product, materialProps, setMaterialProps }) 
           className="inspector-slider"
         />
       </div>
+
+      {/* CUSTOM DECAL TEXTURE STUDIO */}
+      <TextureStudio
+        customTextureUrl={customTextureUrl}
+        setCustomTextureUrl={setCustomTextureUrl}
+        textureConfig={textureConfig}
+        setTextureConfig={setTextureConfig}
+      />
 
       {/* WIREFRAME TOGGLE */}
       <div className="inspector-section toggle-row">
