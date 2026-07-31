@@ -6,6 +6,7 @@
 import React, { useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Environment, ContactShadows, Float } from '@react-three/drei';
+import { EffectComposer, Bloom, Vignette, ChromaticAberration } from '@react-three/postprocessing';
 import { ProductMesh } from './ProductMesh';
 import { HotspotAnnotation } from './HotspotAnnotation';
 import './ViewerCanvas.css';
@@ -18,6 +19,7 @@ import './ViewerCanvas.css';
  * @param {string} props.envPreset - Environment map preset ('city' | 'studio' | 'sunset' | 'warehouse').
  * @param {boolean} props.isAutoRotate - Whether OrbitControls auto-rotates.
  * @param {number} props.explodedFactor - Exploded view offset multiplier (0.0 to 1.0).
+ * @param {Object} props.postProps - Postprocessing settings (bloomIntensity, vignetteDarkness, chromaticAberration).
  * @param {Function} props.onSelectHotspot - Callback when a 3D hotspot is clicked.
  */
 export function ViewerCanvas({
@@ -29,6 +31,7 @@ export function ViewerCanvas({
   customTextureUrl,
   textureConfig,
   lightingProps,
+  postProps,
   onSelectHotspot
 }) {
   const controlsRef = useRef();
@@ -82,6 +85,19 @@ export function ViewerCanvas({
           blur={2.5}
           far={4}
         />
+
+        {/* POST-PROCESSING SHADERS */}
+        <EffectComposer disableNormalPass>
+          <Bloom
+            intensity={postProps?.bloomIntensity ?? 0.8}
+            luminanceThreshold={0.4}
+            luminanceSmoothing={0.9}
+          />
+          <Vignette eskil={false} offset={0.1} darkness={postProps?.vignetteDarkness ?? 0.3} />
+          {postProps?.chromaticAberration > 0 && (
+            <ChromaticAberration offset={[postProps.chromaticAberration, postProps.chromaticAberration]} />
+          )}
+        </EffectComposer>
 
         {/* ORBIT CAMERA CONTROLS */}
         <OrbitControls

@@ -38,6 +38,8 @@ export function Toolbar({
   isLightingOpen,
   onToggleAssembly,
   isAssemblyOpen,
+  onTogglePost,
+  isPostOpen,
   onOpenPreset,
   isMuted,
   setIsMuted
@@ -92,6 +94,19 @@ export function Toolbar({
       >
         <SunMedium size={15} />
         <span>Lighting Studio</span>
+      </button>
+
+      {/* CINEMATIC POST-PROCESSING FX */}
+      <button
+        className={`toolbar-btn ${isPostOpen ? 'active' : ''}`}
+        onClick={() => {
+          playClickSound();
+          if (onTogglePost) onTogglePost();
+        }}
+        title="Cinematic Post-Processing FX (Bloom, Vignette)"
+      >
+        <Sparkles size={15} />
+        <span>VFX Studio</span>
       </button>
 
       {/* ASSEMBLY ANIMATOR TOUR */}

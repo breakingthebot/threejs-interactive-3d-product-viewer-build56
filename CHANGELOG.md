@@ -5,6 +5,13 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.6.0] - 2026-07-31
+
+### Added
+- Integrated **Post-Processing Bloom & Cinematic Depth-of-Field Studio (`PostProcessingStudio.jsx`, `PostProcessingStudio.css`)**.
+- Integrated `@react-three/postprocessing` shader pipeline (`EffectComposer`, `Bloom`, `Vignette`, `ChromaticAberration`).
+- Added "VFX Studio" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [1.5.0] - 2026-07-31
 
 ### Added

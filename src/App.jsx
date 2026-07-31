@@ -14,6 +14,7 @@ import { ARViewerModal } from './components/ARViewerModal';
 import { StudioLighting } from './components/StudioLighting';
 import { ConfiguratorExporter } from './components/ConfiguratorExporter';
 import { AssemblyAnimator } from './components/AssemblyAnimator';
+import { PostProcessingStudio } from './components/PostProcessingStudio';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -41,11 +42,17 @@ export function App() {
   const [isLightingOpen, setIsLightingOpen] = useState(false);
   const [isPresetModalOpen, setIsPresetModalOpen] = useState(false);
   const [isAssemblyOpen, setIsAssemblyOpen] = useState(false);
+  const [isPostOpen, setIsPostOpen] = useState(false);
   const [lightingProps, setLightingProps] = useState({
     keyLightIntensity: 1.2,
     ambientIntensity: 0.6,
     azimuth: 45,
     elevation: 45
+  });
+  const [postProps, setPostProps] = useState({
+    bloomIntensity: 0.8,
+    vignetteDarkness: 0.3,
+    chromaticAberration: 0.001
   });
 
   // Restore preset configuration from URL hash if present
@@ -107,6 +114,7 @@ export function App() {
         customTextureUrl={customTextureUrl}
         textureConfig={textureConfig}
         lightingProps={lightingProps}
+        postProps={postProps}
         onSelectHotspot={setSelectedHotspot}
       />
 
@@ -157,6 +165,14 @@ export function App() {
         product={product}
       />
 
+      {/* FLOATING POST-PROCESSING FX CONTROLS */}
+      <PostProcessingStudio
+        isOpen={isPostOpen}
+        onClose={() => setIsPostOpen(false)}
+        postProps={postProps}
+        setPostProps={setPostProps}
+      />
+
       {/* BOTTOM FLOATING TOOLBAR */}
       <Toolbar
         isAutoRotate={isAutoRotate}
@@ -169,6 +185,8 @@ export function App() {
         isLightingOpen={isLightingOpen}
         onToggleAssembly={() => setIsAssemblyOpen(!isAssemblyOpen)}
         isAssemblyOpen={isAssemblyOpen}
+        onTogglePost={() => setIsPostOpen(!isPostOpen)}
+        isPostOpen={isPostOpen}
         onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
