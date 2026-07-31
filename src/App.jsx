@@ -13,6 +13,7 @@ import { HotspotModal } from './components/HotspotModal';
 import { ARViewerModal } from './components/ARViewerModal';
 import { StudioLighting } from './components/StudioLighting';
 import { ConfiguratorExporter } from './components/ConfiguratorExporter';
+import { AssemblyAnimator } from './components/AssemblyAnimator';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -39,6 +40,7 @@ export function App() {
   const [isARModalOpen, setIsARModalOpen] = useState(false);
   const [isLightingOpen, setIsLightingOpen] = useState(false);
   const [isPresetModalOpen, setIsPresetModalOpen] = useState(false);
+  const [isAssemblyOpen, setIsAssemblyOpen] = useState(false);
   const [lightingProps, setLightingProps] = useState({
     keyLightIntensity: 1.2,
     ambientIntensity: 0.6,
@@ -146,6 +148,15 @@ export function App() {
         setLightingProps={setLightingProps}
       />
 
+      {/* FLOATING ASSEMBLY ANIMATOR CONTROLS */}
+      <AssemblyAnimator
+        isOpen={isAssemblyOpen}
+        onClose={() => setIsAssemblyOpen(false)}
+        explodedFactor={explodedFactor}
+        setExplodedFactor={setExplodedFactor}
+        product={product}
+      />
+
       {/* BOTTOM FLOATING TOOLBAR */}
       <Toolbar
         isAutoRotate={isAutoRotate}
@@ -156,6 +167,8 @@ export function App() {
         onOpenAR={() => setIsARModalOpen(true)}
         onToggleLighting={() => setIsLightingOpen(!isLightingOpen)}
         isLightingOpen={isLightingOpen}
+        onToggleAssembly={() => setIsAssemblyOpen(!isAssemblyOpen)}
+        isAssemblyOpen={isAssemblyOpen}
         onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}

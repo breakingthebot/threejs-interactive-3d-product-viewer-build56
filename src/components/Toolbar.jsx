@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, Sparkles, Layers } from 'lucide-react';
+import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import './Toolbar.css';
@@ -21,6 +21,8 @@ import './Toolbar.css';
  * @param {Function} props.onOpenAR - AR launcher modal trigger handler.
  * @param {Function} props.onToggleLighting - Studio lighting panel toggle handler.
  * @param {boolean} props.isLightingOpen - Lighting studio open state.
+ * @param {Function} props.onToggleAssembly - Assembly animator toggle handler.
+ * @param {boolean} props.isAssemblyOpen - Assembly animator open state.
  * @param {Function} props.onOpenPreset - Preset exporter modal trigger handler.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
@@ -34,6 +36,8 @@ export function Toolbar({
   onOpenAR,
   onToggleLighting,
   isLightingOpen,
+  onToggleAssembly,
+  isAssemblyOpen,
   onOpenPreset,
   isMuted,
   setIsMuted
@@ -88,6 +92,19 @@ export function Toolbar({
       >
         <SunMedium size={15} />
         <span>Lighting Studio</span>
+      </button>
+
+      {/* ASSEMBLY ANIMATOR TOUR */}
+      <button
+        className={`toolbar-btn ${isAssemblyOpen ? 'active' : ''}`}
+        onClick={() => {
+          playClickSound();
+          if (onToggleAssembly) onToggleAssembly();
+        }}
+        title="3D Part Assembly Tour Animation"
+      >
+        <PlayCircle size={15} />
+        <span>Assembly Tour</span>
       </button>
 
       {/* AR AUGMENTED REALITY LAUNCHER */}

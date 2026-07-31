@@ -1,0 +1,190 @@
+/* src/components/AssemblyAnimator.css */
+/* Styles for 3D Part Assembly Timeline Panel */
+
+.assembly-panel {
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 420px;
+  background: var(--bg-surface, rgba(15, 23, 42, 0.92));
+  border: 1px solid var(--border-glow, rgba(56, 189, 248, 0.4));
+  border-radius: 20px;
+  padding: 18px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 105;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+@media (max-width: 640px) {
+  .assembly-panel {
+    width: calc(100% - 32px);
+    bottom: 80px;
+  }
+}
+
+.ap-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+  padding-bottom: 10px;
+}
+
+.ap-title-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ap-icon {
+  color: #38bdf8;
+}
+
+.ap-title {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.ap-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-secondary, #cbd5e1);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ap-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.ap-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ap-controls-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ap-play-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #38bdf8;
+  color: #041220;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ap-play-btn:hover {
+  background: #7dd3fc;
+  box-shadow: 0 0 18px rgba(56, 189, 248, 0.4);
+}
+
+.ap-reset-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ap-reset-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.ap-timeline-box {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ap-timeline-lbl-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ap-lbl {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-secondary, #cbd5e1);
+}
+
+.ap-val {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #38bdf8;
+}
+
+.ap-slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+  accent-color: #38bdf8;
+}
+
+.ap-steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ap-step-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+}
+
+.ap-step-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.ap-step-btn.active {
+  background: rgba(56, 189, 248, 0.15);
+  border-color: rgba(56, 189, 248, 0.35);
+  color: #38bdf8;
+}

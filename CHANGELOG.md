@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.5.0] - 2026-07-31
+
+### Added
+- Integrated **3D Animation Timeline & Part Assembly Sequence (`AssemblyAnimator.jsx`, `AssemblyAnimator.css`)**.
+- Built automated animation frame loop interpolating 3D mesh exploded offsets into assembled product alignment.
+- Added stage preset buttons and interactive timeline progress slider.
+- Added "Assembly Tour" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [1.4.0] - 2026-07-31
 
 ### Added
