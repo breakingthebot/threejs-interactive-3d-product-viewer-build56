@@ -15,6 +15,7 @@ import { StudioLighting } from './components/StudioLighting';
 import { ConfiguratorExporter } from './components/ConfiguratorExporter';
 import { AssemblyAnimator } from './components/AssemblyAnimator';
 import { PostProcessingStudio } from './components/PostProcessingStudio';
+import { CameraPresets, cameraPresetsList } from './components/CameraPresets';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -43,6 +44,8 @@ export function App() {
   const [isPresetModalOpen, setIsPresetModalOpen] = useState(false);
   const [isAssemblyOpen, setIsAssemblyOpen] = useState(false);
   const [isPostOpen, setIsPostOpen] = useState(false);
+  const [activeCameraPreset, setActiveCameraPreset] = useState('isometric');
+  const [cameraTarget, setCameraTarget] = useState(cameraPresetsList[0].target);
   const [lightingProps, setLightingProps] = useState({
     keyLightIntensity: 1.2,
     ambientIntensity: 0.6,
@@ -115,7 +118,17 @@ export function App() {
         textureConfig={textureConfig}
         lightingProps={lightingProps}
         postProps={postProps}
+        cameraTarget={cameraTarget}
         onSelectHotspot={setSelectedHotspot}
+      />
+
+      {/* FLOATING CAMERA ANGLE PRESETS */}
+      <CameraPresets
+        activeCameraPreset={activeCameraPreset}
+        onSelectPreset={(preset) => {
+          setActiveCameraPreset(preset.id);
+          setCameraTarget(preset.target);
+        }}
       />
 
       {/* LEFT SIDEBAR: PRODUCT INFO & SPECS */}

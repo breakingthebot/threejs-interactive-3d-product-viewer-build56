@@ -1,0 +1,86 @@
+/* src/components/CameraPresets.css */
+/* Styles for Camera Viewport Presets Strip */
+
+.camera-presets-strip {
+  position: absolute;
+  top: 90px;
+  left: 395px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 14px;
+  background: var(--bg-surface, rgba(15, 23, 42, 0.85));
+  border: 1px solid var(--border-glass, rgba(255, 255, 255, 0.12));
+  border-radius: 14px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 95;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  flex-wrap: wrap;
+}
+
+@media (max-width: 1200px) {
+  .camera-presets-strip {
+    left: 20px;
+    top: 560px;
+  }
+}
+
+@media (max-width: 900px) {
+  .camera-presets-strip {
+    display: none;
+  }
+}
+
+.cp-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-right: 8px;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cp-icon {
+  color: #38bdf8;
+}
+
+.cp-title {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #94a3b8);
+}
+
+.cp-buttons-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.cp-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted, #94a3b8);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cp-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.cp-btn.active {
+  background: rgba(56, 189, 248, 0.18);
+  border-color: rgba(56, 189, 248, 0.4);
+  color: #38bdf8;
+}

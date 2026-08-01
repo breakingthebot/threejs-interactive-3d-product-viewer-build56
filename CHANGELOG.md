@@ -5,6 +5,13 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.7.0] - 2026-08-01
+
+### Added
+- Integrated **Camera Viewport Bookmark Presets (`CameraPresets.jsx`, `CameraPresets.css`)**.
+- Built R3F `<CameraRig />` frame loop lerp interpolator for smooth camera angle transitions.
+- Added quick camera view buttons (Isometric 3D, Front View, Top View, Side Profile, Close-Up Macro).
+
 ## [1.6.0] - 2026-07-31
 
 ### Added

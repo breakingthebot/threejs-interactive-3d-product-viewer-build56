@@ -4,12 +4,25 @@
 // Created: 2026-07-31
 
 import React, { useRef } from 'react';
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Environment, ContactShadows, Float } from '@react-three/drei';
 import { EffectComposer, Bloom, Vignette, ChromaticAberration } from '@react-three/postprocessing';
+import * as THREE from 'three';
 import { ProductMesh } from './ProductMesh';
 import { HotspotAnnotation } from './HotspotAnnotation';
 import './ViewerCanvas.css';
+
+function CameraRig({ cameraTarget, controlsRef }) {
+  useFrame((state) => {
+    if (cameraTarget && state.camera) {
+      state.camera.position.lerp(new THREE.Vector3(...cameraTarget), 0.08);
+      if (controlsRef?.current) {
+        controlsRef.current.update();
+      }
+    }
+  });
+  return null;
+}
 
 /**
  * Renders the primary 3D WebGL viewport canvas.
@@ -20,6 +33,7 @@ import './ViewerCanvas.css';
  * @param {boolean} props.isAutoRotate - Whether OrbitControls auto-rotates.
  * @param {number} props.explodedFactor - Exploded view offset multiplier (0.0 to 1.0).
  * @param {Object} props.postProps - Postprocessing settings (bloomIntensity, vignetteDarkness, chromaticAberration).
+ * @param {Array|null} props.cameraTarget - Target 3D coordinates [x, y, z] for camera lerping.
  * @param {Function} props.onSelectHotspot - Callback when a 3D hotspot is clicked.
  */
 export function ViewerCanvas({
@@ -32,6 +46,7 @@ export function ViewerCanvas({
   textureConfig,
   lightingProps,
   postProps,
+  cameraTarget,
   onSelectHotspot
 }) {
   const controlsRef = useRef();
@@ -51,6 +66,8 @@ export function ViewerCanvas({
         gl={{ preserveDrawingBuffer: true, antialias: true }}
         className="r3f-canvas"
       >
+        <CameraRig cameraTarget={cameraTarget} controlsRef={controlsRef} />
+
         {/* LIGHTING & ENVIRONMENT */}
         <ambientLight intensity={lightingProps?.ambientIntensity ?? 0.6} />
         <directionalLight
