@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.0.0] - 2026-08-01 - Major Milestone Release
+
+### Added
+- Integrated **SoundFX Audio Frequency & Spatial 3D Audio Engine (`spatialAudioEngine.js`)**.
+- Built Web Audio API `HRTF` `PannerNode` positional audio engine updating camera X/Y/Z coordinates per frame.
+- Added pitch shifting and spatial stereo panning during 3D model orbit navigation.
+- Connected spatial audio mute control to floating toolbar sound button (`Toolbar.jsx`).
+
 ## [1.9.0] - 2026-08-01
 
 ### Added

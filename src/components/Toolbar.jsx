@@ -8,6 +8,7 @@ import { motion } from 'framer-motion';
 import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Ruler, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
+import { spatialAudio } from '../utils/spatialAudioEngine';
 import './Toolbar.css';
 
 /**
@@ -188,14 +189,15 @@ export function Toolbar({
         <span>Snapshot</span>
       </button>
 
-      {/* SOUND TOGGLE */}
+      {/* SOUND & SPATIAL AUDIO TOGGLE */}
       <button
         className="toolbar-btn icon-only"
         onClick={() => {
+          spatialAudio.toggleMute();
           const muted = soundFX.toggleMute();
           setIsMuted(muted);
         }}
-        title={isMuted ? 'Unmute Audio' : 'Mute Audio'}
+        title={isMuted ? 'Unmute Audio & Spatial 3D Panner' : 'Mute Audio & Spatial 3D Panner'}
       >
         {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
       </button>

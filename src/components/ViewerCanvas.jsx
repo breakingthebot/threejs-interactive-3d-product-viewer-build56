@@ -11,10 +11,14 @@ import * as THREE from 'three';
 import { ProductMesh } from './ProductMesh';
 import { HotspotAnnotation } from './HotspotAnnotation';
 import { RulerOverlay } from './RulerOverlay';
+import { spatialAudio } from '../utils/spatialAudioEngine';
 import './ViewerCanvas.css';
 
 function CameraRig({ cameraTarget, controlsRef }) {
   useFrame((state) => {
+    if (state.camera) {
+      spatialAudio.updatePosition(state.camera.position.x, state.camera.position.y, state.camera.position.z);
+    }
     if (cameraTarget && state.camera) {
       state.camera.position.lerp(new THREE.Vector3(...cameraTarget), 0.08);
       if (controlsRef?.current) {
