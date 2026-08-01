@@ -1,0 +1,52 @@
+/* src/components/PerformanceStats.css */
+/* Styles for WebGL Performance Benchmark Profiler Card */
+
+.perf-card {
+  width: 220px;
+  padding: 14px;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(56, 189, 248, 0.4);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: auto;
+}
+
+.perf-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.perf-icon {
+  color: #38bdf8;
+}
+
+.perf-metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  padding-top: 4px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.perf-lbl {
+  color: var(--text-muted, #94a3b8);
+  font-weight: 700;
+}
+
+.perf-val {
+  color: #ffffff;
+  font-weight: 800;
+  font-family: monospace;
+}

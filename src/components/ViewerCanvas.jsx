@@ -12,6 +12,7 @@ import { ProductMesh } from './ProductMesh';
 import { HotspotAnnotation } from './HotspotAnnotation';
 import { RulerOverlay } from './RulerOverlay';
 import { ThermalShader } from './ThermalShader';
+import { PerformanceStats } from './PerformanceStats';
 import { spatialAudio } from '../utils/spatialAudioEngine';
 import './ViewerCanvas.css';
 
@@ -42,6 +43,7 @@ function CameraRig({ cameraTarget, controlsRef }) {
  * @param {Array|null} props.cameraTarget - Target 3D coordinates [x, y, z] for camera lerping.
  * @param {boolean} props.showRuler - Whether 3D dimension ruler lines are rendered.
  * @param {boolean} props.showThermal - Whether 3D thermal stress heatmap is rendered.
+ * @param {boolean} props.showStats - Whether WebGL performance benchmark stats are rendered.
  * @param {Function} props.onSelectHotspot - Callback when a 3D hotspot is clicked.
  */
 export function ViewerCanvas({
@@ -58,6 +60,7 @@ export function ViewerCanvas({
   cameraTarget,
   showRuler = false,
   showThermal = false,
+  showStats = false,
   onSelectHotspot
 }) {
   const controlsRef = useRef();
@@ -103,6 +106,9 @@ export function ViewerCanvas({
           customTextureUrl={customTextureUrl}
           textureConfig={textureConfig}
         />
+
+        {/* WEBGL PERFORMANCE STATS PROFILER */}
+        <PerformanceStats showStats={showStats} />
 
         {/* 3D THERMAL STRESS HEATMAP SHADER */}
         <ThermalShader showThermal={showThermal} />

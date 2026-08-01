@@ -5,6 +5,13 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.6.0] - 2026-08-01
+
+### Added
+- Integrated **Performance Benchmark & FPS Analytics Overlay (`PerformanceStats.jsx`, `PerformanceStats.css`)**.
+- Calculated real-time FPS rate counters, frame latency (ms), GPU draw calls, and rendered triangle counts per frame.
+- Added "Performance Stats" action button into `View & Mesh` tab of Studio Tools drawer (`Toolbar.jsx`).
+
 ## [2.5.0] - 2026-08-01
 
 ### Changed

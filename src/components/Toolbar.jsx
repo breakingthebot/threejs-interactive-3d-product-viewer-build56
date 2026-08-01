@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2,
-  PlayCircle, Sparkles, Box, Ruler, Download, FileText, Flame, Sliders, ChevronUp, X
+  PlayCircle, Sparkles, Box, Ruler, Download, FileText, Flame, Activity, Sliders, ChevronUp, X
 } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
@@ -37,6 +37,8 @@ export function Toolbar({
   showRuler,
   onToggleThermal,
   showThermal,
+  onToggleStats,
+  showStats,
   onOpen4KRender,
   onOpenBOM,
   onOpenHDR,
@@ -102,6 +104,12 @@ export function Toolbar({
                     onClick={() => { playToggleSound(); if (onToggleThermal) onToggleThermal(); }}
                   >
                     <Flame size={15} /> <span>Thermal View</span>
+                  </button>
+                  <button
+                    className={`td-action-btn ${showStats ? 'active' : ''}`}
+                    onClick={() => { playToggleSound(); if (onToggleStats) onToggleStats(); }}
+                  >
+                    <Activity size={15} /> <span>Performance Stats</span>
                   </button>
                   <button
                     className={`td-action-btn ${isPolycountOpen ? 'active' : ''}`}
