@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Ruler, Download, FileText, Layers } from 'lucide-react';
+import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Ruler, Download, FileText, Flame, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import { spatialAudio } from '../utils/spatialAudioEngine';
@@ -28,6 +28,8 @@ import './Toolbar.css';
  * @param {boolean} props.isPolycountOpen - Polycount diagnostic open state.
  * @param {Function} props.onToggleRuler - 3D ruler toggle handler.
  * @param {boolean} props.showRuler - 3D ruler visible state.
+ * @param {Function} props.onToggleThermal - Thermal heatmap toggle handler.
+ * @param {boolean} props.showThermal - Thermal heatmap visible state.
  * @param {Function} props.onOpen4KRender - 4K scene exporter modal trigger handler.
  * @param {Function} props.onOpenBOM - BOM sheet modal trigger handler.
  * @param {Function} props.onOpenHDR - HDR studio modal trigger handler.
@@ -52,6 +54,8 @@ export function Toolbar({
   isPolycountOpen,
   onToggleRuler,
   showRuler,
+  onToggleThermal,
+  showThermal,
   onOpen4KRender,
   onOpenBOM,
   onOpenHDR,
@@ -148,6 +152,19 @@ export function Toolbar({
       >
         <Ruler size={15} />
         <span>3D Ruler</span>
+      </button>
+
+      {/* 3D THERMAL STRESS HEATMAP */}
+      <button
+        className={`toolbar-btn ${showThermal ? 'active' : ''}`}
+        onClick={() => {
+          playToggleSound();
+          if (onToggleThermal) onToggleThermal();
+        }}
+        title="Toggle 3D Thermal Stress Heatmap Simulation"
+      >
+        <Flame size={15} />
+        <span>Thermal View</span>
       </button>
 
       {/* POLYCOUNT & WIREFRAME DIAGNOSTIC */}

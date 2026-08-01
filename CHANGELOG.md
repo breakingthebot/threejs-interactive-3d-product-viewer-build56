@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.4.0] - 2026-08-01
+
+### Added
+- Integrated **3D Heatmap Stress & Thermal Simulation Shader (`ThermalShader.jsx`, `ThermalShader.css`)**.
+- Rendered 3D wireframe thermal dissipation heatmap sphere overlay.
+- Added FLIR-style color temperature gradient legend badge (*20°C Cool Blue -> 55°C Nominal Amber -> 95°C Peak Red*).
+- Added "Thermal View" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [2.3.0] - 2026-08-01
 
 ### Added

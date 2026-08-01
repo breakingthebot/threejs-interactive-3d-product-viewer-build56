@@ -54,6 +54,7 @@ export function App() {
   const [isBOMModalOpen, setIsBOMModalOpen] = useState(false);
   const [isHDROffOpen, setIsHDROffOpen] = useState(false);
   const [showRuler, setShowRuler] = useState(false);
+  const [showThermal, setShowThermal] = useState(false);
   const [activeCameraPreset, setActiveCameraPreset] = useState('isometric');
   const [cameraTarget, setCameraTarget] = useState(cameraPresetsList[0].target);
   const [lightingProps, setLightingProps] = useState({
@@ -131,6 +132,7 @@ export function App() {
         postProps={postProps}
         cameraTarget={cameraTarget}
         showRuler={showRuler}
+        showThermal={showThermal}
         onSelectHotspot={setSelectedHotspot}
       />
 
@@ -225,6 +227,8 @@ export function App() {
         isPolycountOpen={isPolycountOpen}
         onToggleRuler={() => setShowRuler(!showRuler)}
         showRuler={showRuler}
+        onToggleThermal={() => setShowThermal(!showThermal)}
+        showThermal={showThermal}
         onOpen4KRender={() => setIs4KRenderOpen(true)}
         onOpenBOM={() => setIsBOMModalOpen(true)}
         onOpenHDR={() => setIsHDROffOpen(true)}
