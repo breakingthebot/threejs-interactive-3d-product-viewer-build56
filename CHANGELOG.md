@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.2.0] - 2026-08-01
+
+### Added
+- Integrated **Interactive 3D Exploded View Part Inspector & BOM Sheet (`BOMSheetModal.jsx`, `BOMSheetModal.css`)**.
+- Added Bill of Materials mechanical part table with OEM part numbers, materials, weights, and stock availability.
+- Added ISO-9001 certification badges and replacement part ordering trigger buttons.
+- Added "BOM Sheet" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [2.1.0] - 2026-08-01
 
 ### Added

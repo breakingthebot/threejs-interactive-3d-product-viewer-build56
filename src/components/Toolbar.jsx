@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Ruler, Download, Layers } from 'lucide-react';
+import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Ruler, Download, FileText, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import { spatialAudio } from '../utils/spatialAudioEngine';
@@ -29,6 +29,7 @@ import './Toolbar.css';
  * @param {Function} props.onToggleRuler - 3D ruler toggle handler.
  * @param {boolean} props.showRuler - 3D ruler visible state.
  * @param {Function} props.onOpen4KRender - 4K scene exporter modal trigger handler.
+ * @param {Function} props.onOpenBOM - BOM sheet modal trigger handler.
  * @param {Function} props.onOpenPreset - Preset exporter modal trigger handler.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
@@ -51,6 +52,7 @@ export function Toolbar({
   onToggleRuler,
   showRuler,
   onOpen4KRender,
+  onOpenBOM,
   onOpenPreset,
   isMuted,
   setIsMuted
@@ -144,6 +146,19 @@ export function Toolbar({
       >
         <Box size={15} />
         <span>Polycount</span>
+      </button>
+
+      {/* BILL OF MATERIALS (BOM) SHEET */}
+      <button
+        className="toolbar-btn"
+        onClick={() => {
+          playClickSound();
+          if (onOpenBOM) onOpenBOM();
+        }}
+        title="Inspect Bill of Materials (BOM) Parts Catalog"
+      >
+        <FileText size={15} />
+        <span>BOM Sheet</span>
       </button>
 
       {/* 4K STUDIO SCENE RENDERER */}

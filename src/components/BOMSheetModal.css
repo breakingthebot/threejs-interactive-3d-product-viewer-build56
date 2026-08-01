@@ -1,0 +1,203 @@
+/* src/components/BOMSheetModal.css */
+/* Styles for Bill of Materials (BOM) Catalog Drawer */
+
+.bom-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(8, 12, 20, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.bom-modal-card {
+  width: 100%;
+  max-width: 780px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid var(--border-glow, rgba(56, 189, 248, 0.4));
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.bm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: rgba(30, 41, 59, 0.4);
+  border-bottom: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+}
+
+.bm-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bm-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+}
+
+.bm-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bm-icon {
+  color: #38bdf8;
+}
+
+.bm-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-secondary, #cbd5e1);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bm-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.bm-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.bm-table-wrap {
+  overflow-x: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(8, 12, 20, 0.6);
+}
+
+.bm-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 0.82rem;
+}
+
+.bm-table th {
+  background: rgba(30, 41, 59, 0.6);
+  padding: 12px 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #94a3b8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bm-table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: #cbd5e1;
+}
+
+.bm-row {
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.bm-row:hover {
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.bm-row.selected {
+  background: rgba(56, 189, 248, 0.18);
+}
+
+.bm-part-name {
+  font-weight: 800;
+  color: #ffffff !important;
+}
+
+.bm-code {
+  font-family: monospace;
+  color: #38bdf8 !important;
+}
+
+.bm-status-pill {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 0.7rem;
+  font-weight: 800;
+}
+
+.bm-status-pill.green {
+  background: rgba(52, 211, 153, 0.15);
+  color: #34d399;
+}
+
+.bm-status-pill.amber {
+  background: rgba(251, 191, 36, 0.15);
+  color: #fbbf24;
+}
+
+.bm-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding-top: 6px;
+}
+
+.bm-cert-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted, #94a3b8);
+}
+
+.green-icon {
+  color: #34d399;
+}
+
+.bm-order-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 12px;
+  background: #38bdf8;
+  color: #041220;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.bm-order-btn:hover {
+  background: #7dd3fc;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.4);
+}

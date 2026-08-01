@@ -18,6 +18,7 @@ import { PostProcessingStudio } from './components/PostProcessingStudio';
 import { CameraPresets, cameraPresetsList } from './components/CameraPresets';
 import { PolycountDiagnostic } from './components/PolycountDiagnostic';
 import { StudioRendererModal } from './components/StudioRendererModal';
+import { BOMSheetModal } from './components/BOMSheetModal';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -48,6 +49,7 @@ export function App() {
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [isPolycountOpen, setIsPolycountOpen] = useState(false);
   const [is4KRenderOpen, setIs4KRenderOpen] = useState(false);
+  const [isBOMModalOpen, setIsBOMModalOpen] = useState(false);
   const [showRuler, setShowRuler] = useState(false);
   const [activeCameraPreset, setActiveCameraPreset] = useState('isometric');
   const [cameraTarget, setCameraTarget] = useState(cameraPresetsList[0].target);
@@ -220,6 +222,7 @@ export function App() {
         onToggleRuler={() => setShowRuler(!showRuler)}
         showRuler={showRuler}
         onOpen4KRender={() => setIs4KRenderOpen(true)}
+        onOpenBOM={() => setIsBOMModalOpen(true)}
         onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
@@ -250,6 +253,13 @@ export function App() {
       <StudioRendererModal
         isOpen={is4KRenderOpen}
         onClose={() => setIs4KRenderOpen(false)}
+        product={product}
+      />
+
+      {/* BILL OF MATERIALS (BOM) CATALOG SHEET MODAL */}
+      <BOMSheetModal
+        isOpen={isBOMModalOpen}
+        onClose={() => setIsBOMModalOpen(false)}
         product={product}
       />
     </div>
