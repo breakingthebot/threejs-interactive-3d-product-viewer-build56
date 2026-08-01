@@ -19,6 +19,7 @@ import { CameraPresets, cameraPresetsList } from './components/CameraPresets';
 import { PolycountDiagnostic } from './components/PolycountDiagnostic';
 import { StudioRendererModal } from './components/StudioRendererModal';
 import { BOMSheetModal } from './components/BOMSheetModal';
+import { HDRStudio } from './components/HDRStudio';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -41,6 +42,7 @@ export function App() {
   const [selectedHotspot, setSelectedHotspot] = useState(null);
   const [isMuted, setIsMuted] = useState(soundFX.isMuted);
   const [customTextureUrl, setCustomTextureUrl] = useState(null);
+  const [customHDRUrl, setCustomHDRUrl] = useState(null);
   const [textureConfig, setTextureConfig] = useState({ repeat: 1 });
   const [isARModalOpen, setIsARModalOpen] = useState(false);
   const [isLightingOpen, setIsLightingOpen] = useState(false);
@@ -50,6 +52,7 @@ export function App() {
   const [isPolycountOpen, setIsPolycountOpen] = useState(false);
   const [is4KRenderOpen, setIs4KRenderOpen] = useState(false);
   const [isBOMModalOpen, setIsBOMModalOpen] = useState(false);
+  const [isHDROffOpen, setIsHDROffOpen] = useState(false);
   const [showRuler, setShowRuler] = useState(false);
   const [activeCameraPreset, setActiveCameraPreset] = useState('isometric');
   const [cameraTarget, setCameraTarget] = useState(cameraPresetsList[0].target);
@@ -122,6 +125,7 @@ export function App() {
         isAutoRotate={isAutoRotate}
         explodedFactor={explodedFactor}
         customTextureUrl={customTextureUrl}
+        customHDRUrl={customHDRUrl}
         textureConfig={textureConfig}
         lightingProps={lightingProps}
         postProps={postProps}
@@ -223,6 +227,7 @@ export function App() {
         showRuler={showRuler}
         onOpen4KRender={() => setIs4KRenderOpen(true)}
         onOpenBOM={() => setIsBOMModalOpen(true)}
+        onOpenHDR={() => setIsHDROffOpen(true)}
         onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
@@ -261,6 +266,14 @@ export function App() {
         isOpen={isBOMModalOpen}
         onClose={() => setIsBOMModalOpen(false)}
         product={product}
+      />
+
+      {/* CUSTOM HDR ENVIRONMENT INGESTOR MODAL */}
+      <HDRStudio
+        isOpen={isHDROffOpen}
+        onClose={() => setIsHDROffOpen(false)}
+        customHDRUrl={customHDRUrl}
+        setCustomHDRUrl={setCustomHDRUrl}
       />
     </div>
   );

@@ -30,6 +30,7 @@ import './Toolbar.css';
  * @param {boolean} props.showRuler - 3D ruler visible state.
  * @param {Function} props.onOpen4KRender - 4K scene exporter modal trigger handler.
  * @param {Function} props.onOpenBOM - BOM sheet modal trigger handler.
+ * @param {Function} props.onOpenHDR - HDR studio modal trigger handler.
  * @param {Function} props.onOpenPreset - Preset exporter modal trigger handler.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
@@ -53,6 +54,7 @@ export function Toolbar({
   showRuler,
   onOpen4KRender,
   onOpenBOM,
+  onOpenHDR,
   onOpenPreset,
   isMuted,
   setIsMuted
@@ -95,6 +97,19 @@ export function Toolbar({
           ))}
         </select>
       </div>
+
+      {/* CUSTOM HDR MAP UPLOADER */}
+      <button
+        className="toolbar-btn"
+        onClick={() => {
+          playClickSound();
+          if (onOpenHDR) onOpenHDR();
+        }}
+        title="Upload Custom HDR Environment Map"
+      >
+        <Sun size={15} />
+        <span>HDR Studio</span>
+      </button>
 
       {/* STUDIO LIGHTING CONTROLS */}
       <button

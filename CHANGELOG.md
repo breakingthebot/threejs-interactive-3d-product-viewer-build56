@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.3.0] - 2026-08-01
+
+### Added
+- Integrated **Custom HDR Environment Map File Drag-and-Drop Ingestor (`HDRStudio.jsx`, `HDRStudio.css`)**.
+- Added drag-and-drop file ingestion support for `.hdr`, `.exr`, and `.jpg` high-dynamic-range panoramas.
+- Connected custom environment map lighting to R3F canvas `<Environment files={customHDRUrl} background />`.
+- Added "HDR Studio" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [2.2.0] - 2026-08-01
 
 ### Added

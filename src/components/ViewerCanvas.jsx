@@ -49,6 +49,7 @@ export function ViewerCanvas({
   isAutoRotate = true,
   explodedFactor = 0,
   customTextureUrl,
+  customHDRUrl,
   textureConfig,
   lightingProps,
   postProps,
@@ -85,7 +86,11 @@ export function ViewerCanvas({
         <directionalLight position={[-10, -10, -5]} intensity={0.4} color="#38bdf8" />
         <spotLight position={[0, 15, 0]} intensity={0.8} penumbra={1} angle={0.6} />
 
-        <Environment preset={envPreset} />
+        {customHDRUrl ? (
+          <Environment files={customHDRUrl} background />
+        ) : (
+          <Environment preset={envPreset} />
+        )}
 
         {/* 3D PRODUCT MODEL */}
         <ProductMesh
