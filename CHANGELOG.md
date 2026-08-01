@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.5.0] - 2026-08-01
+
+### Changed
+- Redesigned UI architecture with **Streamlined 4-Button Floating Toolbar & Categorized Studio Tools Drawer (`Toolbar.jsx`, `Toolbar.css`)**.
+- Consolidated 15 overcrowded toolbar items into a clean 4-button primary bar (*Auto-Rotate*, *Studio Tools*, *Snapshot*, *Sound Toggle*).
+- Added an expandable glassmorphism popover drawer (`tools-drawer-popover`) organizing features into 3 tabs (*View & Mesh*, *Lighting & VFX*, *CAD & Export*).
+- Restored maximum WebGL 3D viewport canvas visibility and eliminated screen clutter.
+
 ## [2.4.0] - 2026-08-01
 
 ### Added
