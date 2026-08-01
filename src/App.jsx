@@ -17,6 +17,7 @@ import { AssemblyAnimator } from './components/AssemblyAnimator';
 import { PostProcessingStudio } from './components/PostProcessingStudio';
 import { CameraPresets, cameraPresetsList } from './components/CameraPresets';
 import { PolycountDiagnostic } from './components/PolycountDiagnostic';
+import { StudioRendererModal } from './components/StudioRendererModal';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -46,6 +47,7 @@ export function App() {
   const [isAssemblyOpen, setIsAssemblyOpen] = useState(false);
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [isPolycountOpen, setIsPolycountOpen] = useState(false);
+  const [is4KRenderOpen, setIs4KRenderOpen] = useState(false);
   const [showRuler, setShowRuler] = useState(false);
   const [activeCameraPreset, setActiveCameraPreset] = useState('isometric');
   const [cameraTarget, setCameraTarget] = useState(cameraPresetsList[0].target);
@@ -217,6 +219,7 @@ export function App() {
         isPolycountOpen={isPolycountOpen}
         onToggleRuler={() => setShowRuler(!showRuler)}
         showRuler={showRuler}
+        onOpen4KRender={() => setIs4KRenderOpen(true)}
         onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
@@ -241,6 +244,13 @@ export function App() {
         onClose={() => setIsPresetModalOpen(false)}
         product={product}
         materialProps={materialProps}
+      />
+
+      {/* HIGH-RES 4K STUDIO SCENE RENDERER MODAL */}
+      <StudioRendererModal
+        isOpen={is4KRenderOpen}
+        onClose={() => setIs4KRenderOpen(false)}
+        product={product}
       />
     </div>
   );

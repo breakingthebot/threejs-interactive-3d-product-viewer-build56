@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Ruler, Layers } from 'lucide-react';
+import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Ruler, Download, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import { spatialAudio } from '../utils/spatialAudioEngine';
@@ -28,6 +28,7 @@ import './Toolbar.css';
  * @param {boolean} props.isPolycountOpen - Polycount diagnostic open state.
  * @param {Function} props.onToggleRuler - 3D ruler toggle handler.
  * @param {boolean} props.showRuler - 3D ruler visible state.
+ * @param {Function} props.onOpen4KRender - 4K scene exporter modal trigger handler.
  * @param {Function} props.onOpenPreset - Preset exporter modal trigger handler.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
@@ -49,6 +50,7 @@ export function Toolbar({
   isPolycountOpen,
   onToggleRuler,
   showRuler,
+  onOpen4KRender,
   onOpenPreset,
   isMuted,
   setIsMuted
@@ -142,6 +144,19 @@ export function Toolbar({
       >
         <Box size={15} />
         <span>Polycount</span>
+      </button>
+
+      {/* 4K STUDIO SCENE RENDERER */}
+      <button
+        className="toolbar-btn"
+        onClick={() => {
+          playClickSound();
+          if (onOpen4KRender) onOpen4KRender();
+        }}
+        title="Export High-Resolution 4K Studio Render"
+      >
+        <Download size={15} />
+        <span>4K Render</span>
       </button>
 
       {/* ASSEMBLY ANIMATOR TOUR */}

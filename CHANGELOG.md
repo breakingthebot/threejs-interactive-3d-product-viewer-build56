@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.1.0] - 2026-08-01
+
+### Added
+- Integrated **High-Res 4K Studio Scene Renderer & Watermark Exporter (`StudioRendererModal.jsx`, `StudioRendererModal.css`)**.
+- Added 1080p, 1440p 2K, and 2160p 4K resolution render presets.
+- Added Transparent PNG vs Dark Glass Studio background toggles and brand watermark options.
+- Added "4K Render" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [2.0.0] - 2026-08-01 - Major Milestone Release
 
 ### Added
