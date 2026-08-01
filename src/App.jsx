@@ -21,6 +21,7 @@ import { StudioRendererModal } from './components/StudioRendererModal';
 import { BOMSheetModal } from './components/BOMSheetModal';
 import { HDRStudio } from './components/HDRStudio';
 import { TurntableRecorderModal } from './components/TurntableRecorderModal';
+import { VoiceNavigator } from './components/VoiceNavigator';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -55,6 +56,7 @@ export function App() {
   const [isBOMModalOpen, setIsBOMModalOpen] = useState(false);
   const [isHDROffOpen, setIsHDROffOpen] = useState(false);
   const [isTurntableOpen, setIsTurntableOpen] = useState(false);
+  const [isVoiceActive, setIsVoiceActive] = useState(false);
   const [showRuler, setShowRuler] = useState(false);
   const [showThermal, setShowThermal] = useState(false);
   const [showStats, setShowStats] = useState(false);
@@ -235,6 +237,8 @@ export function App() {
         showThermal={showThermal}
         onToggleStats={() => setShowStats(!showStats)}
         showStats={showStats}
+        onToggleVoice={() => setIsVoiceActive(!isVoiceActive)}
+        isVoiceActive={isVoiceActive}
         onOpen4KRender={() => setIs4KRenderOpen(true)}
         onOpenTurntable={() => setIsTurntableOpen(true)}
         onOpenBOM={() => setIsBOMModalOpen(true)}
@@ -242,6 +246,25 @@ export function App() {
         onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}
+      />
+
+      {/* VOICE COMMAND NAVIGATION HUD */}
+      <VoiceNavigator
+        isActive={isVoiceActive}
+        setIsActive={setIsVoiceActive}
+        actions={{
+          onExplode: () => setExplodedFactor(explodedFactor > 0 ? 0 : 0.8),
+          onRuler: () => setShowRuler(!showRuler),
+          onWireframe: () => setMaterialProps({ ...materialProps, wireframe: !materialProps.wireframe }),
+          onAutoRotate: () => setIsAutoRotate(!isAutoRotate),
+          onThermal: () => setShowThermal(!showThermal),
+          onReset: () => {
+            setExplodedFactor(0);
+            setShowRuler(false);
+            setShowThermal(false);
+            setMaterialProps({ ...materialProps, wireframe: false });
+          }
+        }}
       />
 
       {/* HOTSPOT CALLOUT MODAL */}

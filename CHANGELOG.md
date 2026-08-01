@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.8.0] - 2026-08-01
+
+### Added
+- Integrated **Multilingual Voice Command Viewport Navigator (`VoiceNavigator.jsx`, `VoiceNavigator.css`)**.
+- Built Web Speech API (`SpeechRecognition`) continuous speech parser recognizing spoken commands (*"Explode"*, *"Ruler"*, *"Wireframe"*, *"Rotate"*, *"Thermal"*, *"Reset"*).
+- Added real-time voice recognition transcript HUD badge with pulsing microphone waves.
+- Added "Voice Control" action button into `View & Mesh` tab of Studio Tools drawer (`Toolbar.jsx`).
+
 ## [2.7.0] - 2026-08-01
 
 ### Added

@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2,
-  PlayCircle, Sparkles, Box, Ruler, Download, FileText, Flame, Activity, Video, Sliders, ChevronUp, X
+  PlayCircle, Sparkles, Box, Ruler, Download, FileText, Flame, Activity, Video, Mic, Sliders, ChevronUp, X
 } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
@@ -39,6 +39,8 @@ export function Toolbar({
   showThermal,
   onToggleStats,
   showStats,
+  onToggleVoice,
+  isVoiceActive,
   onOpen4KRender,
   onOpenTurntable,
   onOpenBOM,
@@ -94,6 +96,12 @@ export function Toolbar({
             <div className="td-grid">
               {activeTab === 'view' && (
                 <>
+                  <button
+                    className={`td-action-btn ${isVoiceActive ? 'active' : ''}`}
+                    onClick={() => { playToggleSound(); if (onToggleVoice) onToggleVoice(); }}
+                  >
+                    <Mic size={15} /> <span>Voice Control</span>
+                  </button>
                   <button
                     className={`td-action-btn ${showRuler ? 'active' : ''}`}
                     onClick={() => { playToggleSound(); if (onToggleRuler) onToggleRuler(); }}

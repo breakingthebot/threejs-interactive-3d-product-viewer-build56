@@ -1,0 +1,96 @@
+/* src/components/VoiceNavigator.css */
+/* Styles for Web Speech API Voice Command Navigator HUD */
+
+.voice-hud-container {
+  position: absolute;
+  top: 75px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  pointer-events: auto;
+}
+
+.vh-badge {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 18px;
+  background: rgba(15, 23, 42, 0.94);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  border-radius: 9999px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 10px 30px rgba(56, 189, 248, 0.3);
+}
+
+.vh-mic-pulse {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: micPulse 1.5s infinite alternate;
+}
+
+@keyframes micPulse {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+  100% { box-shadow: 0 0 0 10px rgba(56, 189, 248, 0); }
+}
+
+.vh-mic-icon {
+  color: #38bdf8;
+}
+
+.vh-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.vh-title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #38bdf8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.vh-transcript {
+  font-size: 0.78rem;
+  color: #ffffff;
+  font-style: italic;
+}
+
+.vh-cmd-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  background: rgba(52, 211, 153, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  color: #34d399;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.vh-stop-btn {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #f87171;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.vh-stop-btn:hover {
+  background: rgba(239, 68, 68, 0.3);
+  color: #ffffff;
+}
