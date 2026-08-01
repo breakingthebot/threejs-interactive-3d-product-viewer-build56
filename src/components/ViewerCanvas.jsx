@@ -10,6 +10,7 @@ import { EffectComposer, Bloom, Vignette, ChromaticAberration } from '@react-thr
 import * as THREE from 'three';
 import { ProductMesh } from './ProductMesh';
 import { HotspotAnnotation } from './HotspotAnnotation';
+import { RulerOverlay } from './RulerOverlay';
 import './ViewerCanvas.css';
 
 function CameraRig({ cameraTarget, controlsRef }) {
@@ -34,6 +35,7 @@ function CameraRig({ cameraTarget, controlsRef }) {
  * @param {number} props.explodedFactor - Exploded view offset multiplier (0.0 to 1.0).
  * @param {Object} props.postProps - Postprocessing settings (bloomIntensity, vignetteDarkness, chromaticAberration).
  * @param {Array|null} props.cameraTarget - Target 3D coordinates [x, y, z] for camera lerping.
+ * @param {boolean} props.showRuler - Whether 3D dimension ruler lines are rendered.
  * @param {Function} props.onSelectHotspot - Callback when a 3D hotspot is clicked.
  */
 export function ViewerCanvas({
@@ -47,6 +49,7 @@ export function ViewerCanvas({
   lightingProps,
   postProps,
   cameraTarget,
+  showRuler = false,
   onSelectHotspot
 }) {
   const controlsRef = useRef();
@@ -88,6 +91,9 @@ export function ViewerCanvas({
           customTextureUrl={customTextureUrl}
           textureConfig={textureConfig}
         />
+
+        {/* 3D MEASUREMENT RULER OVERLAY */}
+        <RulerOverlay showRuler={showRuler} productId={product.id} />
 
         {/* 3D HOTSPOT ANNOTATIONS */}
         {product.hotspots.map((hp) => (

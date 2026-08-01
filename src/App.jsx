@@ -46,6 +46,7 @@ export function App() {
   const [isAssemblyOpen, setIsAssemblyOpen] = useState(false);
   const [isPostOpen, setIsPostOpen] = useState(false);
   const [isPolycountOpen, setIsPolycountOpen] = useState(false);
+  const [showRuler, setShowRuler] = useState(false);
   const [activeCameraPreset, setActiveCameraPreset] = useState('isometric');
   const [cameraTarget, setCameraTarget] = useState(cameraPresetsList[0].target);
   const [lightingProps, setLightingProps] = useState({
@@ -121,6 +122,7 @@ export function App() {
         lightingProps={lightingProps}
         postProps={postProps}
         cameraTarget={cameraTarget}
+        showRuler={showRuler}
         onSelectHotspot={setSelectedHotspot}
       />
 
@@ -213,6 +215,8 @@ export function App() {
         isPostOpen={isPostOpen}
         onTogglePolycount={() => setIsPolycountOpen(!isPolycountOpen)}
         isPolycountOpen={isPolycountOpen}
+        onToggleRuler={() => setShowRuler(!showRuler)}
+        showRuler={showRuler}
         onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}

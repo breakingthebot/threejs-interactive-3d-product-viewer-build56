@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.9.0] - 2026-08-01
+
+### Added
+- Integrated **Interactive 3D Product Dimension & Measurement Ruler (`RulerOverlay.jsx`, `RulerOverlay.css`)**.
+- Rendered 3D dashed dimension vectors for Width (X-axis), Height (Y-axis), and Depth (Z-axis).
+- Added real-time millimeter (mm) callout badges anchored in WebGL space.
+- Added "3D Ruler" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [1.8.0] - 2026-08-01
 
 ### Added

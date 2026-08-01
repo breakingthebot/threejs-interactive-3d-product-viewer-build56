@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Layers } from 'lucide-react';
+import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Ruler, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import './Toolbar.css';
@@ -25,6 +25,8 @@ import './Toolbar.css';
  * @param {boolean} props.isAssemblyOpen - Assembly animator open state.
  * @param {Function} props.onTogglePolycount - Polycount diagnostic panel toggle handler.
  * @param {boolean} props.isPolycountOpen - Polycount diagnostic open state.
+ * @param {Function} props.onToggleRuler - 3D ruler toggle handler.
+ * @param {boolean} props.showRuler - 3D ruler visible state.
  * @param {Function} props.onOpenPreset - Preset exporter modal trigger handler.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
@@ -44,6 +46,8 @@ export function Toolbar({
   isPostOpen,
   onTogglePolycount,
   isPolycountOpen,
+  onToggleRuler,
+  showRuler,
   onOpenPreset,
   isMuted,
   setIsMuted
@@ -111,6 +115,19 @@ export function Toolbar({
       >
         <Sparkles size={15} />
         <span>VFX Studio</span>
+      </button>
+
+      {/* 3D MEASUREMENT RULER */}
+      <button
+        className={`toolbar-btn ${showRuler ? 'active' : ''}`}
+        onClick={() => {
+          playToggleSound();
+          if (onToggleRuler) onToggleRuler();
+        }}
+        title="Toggle Interactive 3D Measurement Ruler Lines"
+      >
+        <Ruler size={15} />
+        <span>3D Ruler</span>
       </button>
 
       {/* POLYCOUNT & WIREFRAME DIAGNOSTIC */}
