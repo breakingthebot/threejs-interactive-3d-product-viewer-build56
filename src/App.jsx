@@ -20,6 +20,7 @@ import { PolycountDiagnostic } from './components/PolycountDiagnostic';
 import { StudioRendererModal } from './components/StudioRendererModal';
 import { BOMSheetModal } from './components/BOMSheetModal';
 import { HDRStudio } from './components/HDRStudio';
+import { TurntableRecorderModal } from './components/TurntableRecorderModal';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -53,6 +54,7 @@ export function App() {
   const [is4KRenderOpen, setIs4KRenderOpen] = useState(false);
   const [isBOMModalOpen, setIsBOMModalOpen] = useState(false);
   const [isHDROffOpen, setIsHDROffOpen] = useState(false);
+  const [isTurntableOpen, setIsTurntableOpen] = useState(false);
   const [showRuler, setShowRuler] = useState(false);
   const [showThermal, setShowThermal] = useState(false);
   const [showStats, setShowStats] = useState(false);
@@ -234,6 +236,7 @@ export function App() {
         onToggleStats={() => setShowStats(!showStats)}
         showStats={showStats}
         onOpen4KRender={() => setIs4KRenderOpen(true)}
+        onOpenTurntable={() => setIsTurntableOpen(true)}
         onOpenBOM={() => setIsBOMModalOpen(true)}
         onOpenHDR={() => setIsHDROffOpen(true)}
         onOpenPreset={() => setIsPresetModalOpen(true)}
@@ -282,6 +285,13 @@ export function App() {
         onClose={() => setIsHDROffOpen(false)}
         customHDRUrl={customHDRUrl}
         setCustomHDRUrl={setCustomHDRUrl}
+      />
+
+      {/* 360 TURNTABLE VIDEO RECORDER MODAL */}
+      <TurntableRecorderModal
+        isOpen={isTurntableOpen}
+        onClose={() => setIsTurntableOpen(false)}
+        product={product}
       />
     </div>
   );

@@ -5,6 +5,13 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [2.7.0] - 2026-08-01
+
+### Added
+- Integrated **Interactive 3D Turntable 360 Video Studio & GIF Recorder (`TurntableRecorderModal.jsx`, `TurntableRecorderModal.css`)**.
+- Built HTML5 `MediaRecorder` API canvas stream capture engine recording 30 FPS WebM videos.
+- Added "360 Video Studio" action button into `CAD & Export` tab of Studio Tools drawer (`Toolbar.jsx`).
+
 ## [2.6.0] - 2026-08-01
 
 ### Added

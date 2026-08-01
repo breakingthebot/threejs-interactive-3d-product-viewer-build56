@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2,
-  PlayCircle, Sparkles, Box, Ruler, Download, FileText, Flame, Activity, Sliders, ChevronUp, X
+  PlayCircle, Sparkles, Box, Ruler, Download, FileText, Flame, Activity, Video, Sliders, ChevronUp, X
 } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
@@ -40,6 +40,7 @@ export function Toolbar({
   onToggleStats,
   showStats,
   onOpen4KRender,
+  onOpenTurntable,
   onOpenBOM,
   onOpenHDR,
   onOpenPreset,
@@ -173,6 +174,12 @@ export function Toolbar({
                     onClick={() => { playClickSound(); if (onOpen4KRender) onOpen4KRender(); }}
                   >
                     <Download size={15} /> <span>4K Render</span>
+                  </button>
+                  <button
+                    className="td-action-btn"
+                    onClick={() => { playClickSound(); if (onOpenTurntable) onOpenTurntable(); }}
+                  >
+                    <Video size={15} /> <span>360 Video Studio</span>
                   </button>
                   <button
                     className="td-action-btn"

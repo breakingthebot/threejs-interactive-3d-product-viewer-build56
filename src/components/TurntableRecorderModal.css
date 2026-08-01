@@ -1,0 +1,209 @@
+/* src/components/TurntableRecorderModal.css */
+/* Styles for 360 Turntable Video Recorder Modal */
+
+.turntable-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(8, 12, 20, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.turntable-modal-card {
+  width: 100%;
+  max-width: 540px;
+  background: rgba(15, 23, 42, 0.96);
+  border: 1px solid var(--border-glow, rgba(56, 189, 248, 0.4));
+  border-radius: 24px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.tm-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  background: rgba(30, 41, 59, 0.4);
+  border-bottom: 1px solid var(--border-glass, rgba(255, 255, 255, 0.1));
+}
+
+.tm-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tm-kicker {
+  font-size: 0.72rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+}
+
+.tm-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tm-icon {
+  color: #ef4444;
+}
+
+.tm-close-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: none;
+  color: var(--text-secondary, #cbd5e1);
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tm-close-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.tm-body {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.tm-info-box {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(8, 12, 20, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tm-film-icon {
+  color: #38bdf8;
+}
+
+.tm-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.tm-info-head {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.tm-info-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted, #94a3b8);
+}
+
+.tm-recording-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  border-radius: 16px;
+}
+
+.tm-pulse-red {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 10px #ef4444;
+  animation: pulseRed 1s infinite alternate;
+}
+
+@keyframes pulseRed {
+  to { transform: scale(1.3); opacity: 0.6; }
+}
+
+.tm-rec-text {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #f87171;
+}
+
+.tm-progress-bar {
+  width: 100%;
+  height: 8px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.tm-progress-fill {
+  height: 100%;
+  background: #ef4444;
+  transition: width 0.4s ease;
+}
+
+.tm-video-preview-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tm-success-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #34d399;
+}
+
+.tm-video-player {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #000;
+}
+
+.tm-download-btn, .tm-rec-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  background: #38bdf8;
+  color: #041220;
+  border: none;
+  font-size: 0.88rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.tm-download-btn:hover, .tm-rec-btn:hover:not(:disabled) {
+  background: #7dd3fc;
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+}
