@@ -5,7 +5,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Layers } from 'lucide-react';
+import { RotateCw, Sun, SunMedium, Camera, Volume2, VolumeX, Smartphone, Share2, PlayCircle, Sparkles, Box, Layers } from 'lucide-react';
 import { environmentPresets } from '../data/productsData';
 import { playClickSound, playToggleSound, soundFX } from '../utils/soundFX';
 import './Toolbar.css';
@@ -23,6 +23,8 @@ import './Toolbar.css';
  * @param {boolean} props.isLightingOpen - Lighting studio open state.
  * @param {Function} props.onToggleAssembly - Assembly animator toggle handler.
  * @param {boolean} props.isAssemblyOpen - Assembly animator open state.
+ * @param {Function} props.onTogglePolycount - Polycount diagnostic panel toggle handler.
+ * @param {boolean} props.isPolycountOpen - Polycount diagnostic open state.
  * @param {Function} props.onOpenPreset - Preset exporter modal trigger handler.
  * @param {boolean} props.isMuted - Sound state.
  * @param {Function} props.setIsMuted - Sound state updater.
@@ -40,6 +42,8 @@ export function Toolbar({
   isAssemblyOpen,
   onTogglePost,
   isPostOpen,
+  onTogglePolycount,
+  isPolycountOpen,
   onOpenPreset,
   isMuted,
   setIsMuted
@@ -107,6 +111,19 @@ export function Toolbar({
       >
         <Sparkles size={15} />
         <span>VFX Studio</span>
+      </button>
+
+      {/* POLYCOUNT & WIREFRAME DIAGNOSTIC */}
+      <button
+        className={`toolbar-btn ${isPolycountOpen ? 'active' : ''}`}
+        onClick={() => {
+          playClickSound();
+          if (onTogglePolycount) onTogglePolycount();
+        }}
+        title="Polycount & Wireframe Topology Diagnostic"
+      >
+        <Box size={15} />
+        <span>Polycount</span>
       </button>
 
       {/* ASSEMBLY ANIMATOR TOUR */}

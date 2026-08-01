@@ -16,6 +16,7 @@ import { ConfiguratorExporter } from './components/ConfiguratorExporter';
 import { AssemblyAnimator } from './components/AssemblyAnimator';
 import { PostProcessingStudio } from './components/PostProcessingStudio';
 import { CameraPresets, cameraPresetsList } from './components/CameraPresets';
+import { PolycountDiagnostic } from './components/PolycountDiagnostic';
 import { productsList } from './data/productsData';
 import { soundFX } from './utils/soundFX';
 import './App.css';
@@ -44,6 +45,7 @@ export function App() {
   const [isPresetModalOpen, setIsPresetModalOpen] = useState(false);
   const [isAssemblyOpen, setIsAssemblyOpen] = useState(false);
   const [isPostOpen, setIsPostOpen] = useState(false);
+  const [isPolycountOpen, setIsPolycountOpen] = useState(false);
   const [activeCameraPreset, setActiveCameraPreset] = useState('isometric');
   const [cameraTarget, setCameraTarget] = useState(cameraPresetsList[0].target);
   const [lightingProps, setLightingProps] = useState({
@@ -186,6 +188,15 @@ export function App() {
         setPostProps={setPostProps}
       />
 
+      {/* FLOATING POLYCOUNT DIAGNOSTIC CONTROLS */}
+      <PolycountDiagnostic
+        isOpen={isPolycountOpen}
+        onClose={() => setIsPolycountOpen(false)}
+        product={product}
+        materialProps={materialProps}
+        setMaterialProps={setMaterialProps}
+      />
+
       {/* BOTTOM FLOATING TOOLBAR */}
       <Toolbar
         isAutoRotate={isAutoRotate}
@@ -200,6 +211,8 @@ export function App() {
         isAssemblyOpen={isAssemblyOpen}
         onTogglePost={() => setIsPostOpen(!isPostOpen)}
         isPostOpen={isPostOpen}
+        onTogglePolycount={() => setIsPolycountOpen(!isPolycountOpen)}
+        isPolycountOpen={isPolycountOpen}
         onOpenPreset={() => setIsPresetModalOpen(true)}
         isMuted={isMuted}
         setIsMuted={setIsMuted}

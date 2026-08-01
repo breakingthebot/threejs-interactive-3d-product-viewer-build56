@@ -5,6 +5,14 @@ All notable changes to **Build 56: Three.js Interactive 3D Product Viewer** will
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v1.8.0.html).
 
+## [1.8.0] - 2026-08-01
+
+### Added
+- Integrated **Interactive 3D Wireframe Polycount Diagnostic Mode (`PolycountDiagnostic.jsx`, `PolycountDiagnostic.css`)**.
+- Added live triangle/vertex counters, WebGL draw call metrics, and VRAM memory footprint tracking.
+- Added interactive Wireframe Shader Mode toggle switch.
+- Added "Polycount" action button to floating toolbar (`Toolbar.jsx`).
+
 ## [1.7.0] - 2026-08-01
 
 ### Added
